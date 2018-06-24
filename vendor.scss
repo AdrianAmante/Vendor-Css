@@ -1,0 +1,1825 @@
+/* HPE Pallete */
+$hpe-colors: (
+	grn:				#00B388,
+	sla-blu:		    #425563,
+	pur:				#614767,
+	bnz:				#80746E,
+    dk-stl:			    #5F7A76,
+    lt-gry:			    #F6F6F6,
+    tur:                #2AD2C9
+);
+
+// /* HPI Pallete */
+$hpi-colors: (
+	blu:				#0096D6,
+	dk-gry:			    #767676,
+	md-gry:		    	#B9B8BB,
+	lt-gry:			    #E5E8E8,
+	org:				#D7410B,
+	grn:				#B7CA34,
+	pur:				#822980
+);
+
+// /* HP Print Pallete */
+$hpr-colors: (
+	gld:				#c8932b
+);
+
+// /* Dell Pallete */
+$del-colors: (
+	blu:				#007DB8,
+	cbn:				#444444,
+	gry:				#808080,
+	gra:				#AAAAAA,
+	qtz:				#EEEEEE,
+	tea:				#42AEAF,
+	grn:				#6EA204,
+	cha:				#C1D82F,
+	yel:				#F2AF00,
+	ora:				#EE6411,
+	cor:				#D74324,
+	red:				#CE1126,
+	ber:				#B7295A,
+	pur:				#6E2585,
+	mid:				#00447C
+);
+
+// /* Lenovo Pallete */
+$len-colors: (
+	red:				#E2231A,
+	gry:				#6F7170,
+	md-gry:			    #C4BEB6,
+	lt-gry:			    #D9D8D6,
+	ora:				#FF6A00,
+	pnk:				#E96BAF,
+	sap-blu:		    #3E8DDD,
+	sty-blu:		    #4AC0E0,
+	env-grn:		    #6ABF4A
+);
+
+// /* Cisco Palette */
+$cis-colors: (
+	blu:				#049FD9,
+	lk-blu:			    #004BAF,
+	rv-blu:			    #097DBC,
+	ic-blu:			    #C4D6ED,
+	dk-gry2:		    #58585B,
+	dk-gry1:		    #39393b,
+	md-gry:			    #9E9EA2,
+	lt-gry:			    #C6C7CA,
+	pl-gry:			    #E8EBF1,
+	sta-blu:		    #049fd9,
+	sge-grn:		    #abc233,
+	dp-grn:			    #005C21,
+	md-grn:			    #6CC04A,
+	dp-red:			    #8B1001,
+	sta-ora:		    #FF7300,
+	ora:				#FFA000
+);
+
+// /* APC Pallete */
+$apc-colors: (
+	red:				#e31837
+);
+
+// /* Schneider Electic Pallete */
+$se-colors: (
+	grn:				#009530,
+	lt-grn:			    #3DCD58,
+	dk-gry:			    #626469,
+	lt-gry:			    #9FA0A4,
+	sun-yel:		    #FFD100,
+	ora:				#E47F00,
+	fu-red:			    #B10043,
+	sky-blu:		    #42B4E6
+);
+
+// /* Aruba Pallete */
+$arb-colors: (
+	ora:				#FF8300,
+	gry:				#646569,
+	lt-gry:			    #C3C5C8,
+	blu:				#004876,
+	lt-blu:			    #9FD4C9,
+	lt-grn:			    #D5D654,
+	dk-ora:			    #FF4C00,
+	grn:				#008375,
+	mer-blu:		    #2E7CBE,
+	sky-blu:		    #99DAF8,
+	ex-lt-tea:          #F1F9F7,
+	ex-lt-grn:	        #F9F9EC,
+	ex-lt-gry:	        #F6F6F7
+);
+
+// /* Microsoft */
+$msf-colors: (
+	blu:				#00a1f1,
+	yel:				#ffbb00,
+	grn:				#7cbb00,
+	red:				#f65314
+);
+
+// /* Life Size Pallete */
+$lfs-colors: (
+	vio:				#4b45db,
+	yel:				#ff9e16,
+    pur-red:			#ea1d76,
+    aqua:			    #26CAD3,
+
+);
+
+// /* Oracle Pallete */
+$ora-colors: (
+	lt-sla:			    #cad9de,
+	sla:				#8aadbf,
+	dk-sla:			    #324b5c,
+	lt-gry:			    #dee0e0,
+	gry:				#939699,
+	dk-gry:			    #4e5052,
+	lt-ora:			    #ffd39e,
+	ora:				#f29111,
+	dk-ora:			    #8a331d,
+	lt-blu:			    #bde6ee,
+	blu:				#00758f,
+	dk-blu:			    #003b4d,
+	lt-grn:			    #d2e8c5,
+	grn:				#3a913f,
+	dk-grn:			    #004f35,
+	lt-bur:			    #ebcad3,
+	bur:				#942645,
+	dk-bur:			    #592439,
+	hyp-blu:		    #00758f
+);
+
+// /* HPE Styles */
+
+@each $hpe-colors,
+$color in $hpe-colors {
+    .hpe-#{$hpe-colors}-text {
+        color: $color;
+    }
+    .hpe-#{$hpe-colors}-bg {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .blk {
+            color: #333333;
+        }
+        .wht {
+            color: #ffffff;
+        }
+    }
+    .hpe-#{$hpe-colors}-round {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpe-#{$hpe-colors}-round:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .hpe-#{$hpe-colors}-round:focus {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpe-#{$hpe-colors}-square {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        border: 2px solid $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpe-#{$hpe-colors}-square:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .hpe-#{$hpe-colors}-square:focus {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpe-#{$hpe-colors}-outline-square {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpe-#{$hpe-colors}-outline-square:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .hpe-#{$hpe-colors}-outline-square:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpe-#{$hpe-colors}-outline-round {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpe-#{$hpe-colors}-outline-round:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .hpe-#{$hpe-colors}-outline-round:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+}
+
+
+// /* HPI Styles */
+
+@each $hpi-colors,
+$color in $hpi-colors {
+    .hpi-#{$hpi-colors}-text {
+        color: $color;
+    }
+    .hpi-#{$hpi-colors}-bg {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .blk {
+            color: #333333;
+        }
+        .wht {
+            color: #ffffff;
+        }
+    }
+    .hpi-#{$hpi-colors}-round {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpi-#{$hpi-colors}-round:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .hpi-#{$hpi-colors}-round:focus {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpi-#{$hpi-colors}-square {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        border: 2px solid $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpi-#{$hpi-colors}-square:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .hpi-#{$hpi-colors}-square:focus {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpi-#{$hpi-colors}-outline-square {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpi-#{$hpi-colors}-outline-square:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .hpi-#{$hpi-colors}-outline-square:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpi-#{$hpi-colors}-outline-round {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpi-#{$hpi-colors}-outline-round:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .hpi-#{$hpi-colors}-outline-round:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+}
+
+
+// /* HP Print Styles */
+
+@each $hpr-colors,
+$color in $hpr-colors {
+    .hpr-#{$hpr-colors}-text {
+        color: $color;
+    }
+    .hpr-#{$hpr-colors}-bg {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .blk {
+            color: #333333;
+        }
+        .wht {
+            color: #ffffff;
+        }
+    }
+    .hpr-#{$hpr-colors}-round {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpr-#{$hpr-colors}-round:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .hpr-#{$hpr-colors}-round:focus {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpr-#{$hpr-colors}-square {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        border: 2px solid $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpr-#{$hpr-colors}-square:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .hpr-#{$hpr-colors}-square:focus {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpr-#{$hpr-colors}-outline-square {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpr-#{$hpr-colors}-outline-square:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .hpr-#{$hpr-colors}-outline-square:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpr-#{$hpr-colors}-outline-round {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .hpr-#{$hpr-colors}-outline-round:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .hpr-#{$hpr-colors}-outline-round:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+}
+
+
+// /* Dell Styles */
+
+@each $del-colors,
+$color in $del-colors {
+    .del-#{$del-colors}-text {
+        color: $color;
+    }
+    .del-#{$del-colors}-bg {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .blk {
+            color: #333333;
+        }
+        .wht {
+            color: #ffffff;
+        }
+    }
+    .del-#{$del-colors}-round {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .del-#{$del-colors}-round:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .del-#{$del-colors}-round:focus {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .del-#{$del-colors}-square {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        border: 2px solid $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .del-#{$del-colors}-square:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .del-#{$del-colors}-square:focus {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .del-#{$del-colors}-outline-square {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .del-#{$del-colors}-outline-square:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .del-#{$del-colors}-outline-square:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .del-#{$del-colors}-outline-round {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .del-#{$del-colors}-outline-round:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .del-#{$del-colors}-outline-round:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+}
+
+
+// /* Lenovo Styles */
+
+@each $len-colors,
+$color in $len-colors {
+    .len-#{$len-colors}-text {
+        color: $color;
+    }
+    .len-#{$len-colors}-bg {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .blk {
+            color: #333333;
+        }
+        .wht {
+            color: #ffffff;
+        }
+    }
+    .len-#{$len-colors}-round {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .len-#{$len-colors}-round:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .len-#{$len-colors}-round:focus {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .len-#{$len-colors}-square {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        border: 2px solid $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .len-#{$len-colors}-square:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .len-#{$len-colors}-square:focus {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .len-#{$len-colors}-outline-square {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .len-#{$len-colors}-outline-square:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .len-#{$len-colors}-outline-square:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .len-#{$len-colors}-outline-round {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .len-#{$len-colors}-outline-round:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .len-#{$len-colors}-outline-round:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+}
+
+
+// /* Cisco Styles */
+
+@each $cis-colors,
+$color in $cis-colors {
+    .cis-#{$cis-colors}-text {
+        color: $color;
+    }
+    .cis-#{$cis-colors}-bg {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .blk {
+            color: #333333;
+        }
+        .wht {
+            color: #ffffff;
+        }
+    }
+    .cis-#{$cis-colors}-round {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .cis-#{$cis-colors}-round:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .cis-#{$cis-colors}-round:focus {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .cis-#{$cis-colors}-square {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        border: 2px solid $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .cis-#{$cis-colors}-square:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .cis-#{$cis-colors}-square:focus {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .cis-#{$cis-colors}-outline-square {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .cis-#{$cis-colors}-outline-square:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .cis-#{$cis-colors}-outline-square:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .cis-#{$cis-colors}-outline-round {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .cis-#{$cis-colors}-outline-round:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .cis-#{$cis-colors}-outline-round:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+}
+
+
+// /* APC Styles */
+
+@each $apc-colors,
+$color in $apc-colors {
+    .apc-#{$apc-colors}-text {
+        color: $color;
+    }
+    .apc-#{$apc-colors}-bg {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .blk {
+            color: #333333;
+        }
+        .wht {
+            color: #ffffff;
+        }
+    }
+    .apc-#{$apc-colors}-round {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .apc-#{$apc-colors}-round:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .apc-#{$apc-colors}-round:focus {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .apc-#{$apc-colors}-square {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        border: 2px solid $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .apc-#{$apc-colors}-square:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .apc-#{$apc-colors}-square:focus {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .apc-#{$apc-colors}-outline-square {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .apc-#{$apc-colors}-outline-square:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .apc-#{$apc-colors}-outline-square:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .apc-#{$apc-colors}-outline-round {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .apc-#{$apc-colors}-outline-round:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .apc-#{$apc-colors}-outline-round:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+}
+
+
+// /* Schneider Electric Styles */
+
+@each $se-colors,
+$color in $se-colors {
+    .se-#{$se-colors}-text {
+        color: $color;
+    }
+    .se-#{$se-colors}-bg {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .blk {
+            color: #333333;
+        }
+        .wht {
+            color: #ffffff;
+        }
+    }
+    .se-#{$se-colors}-round {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        border-radius: 50px;
+        text-transform: none;
+    }
+    .se-#{$se-colors}-round:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .se-#{$se-colors}-round:focus {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .se-#{$se-colors}-square {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        border: 2px solid $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .se-#{$se-colors}-square:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .se-#{$se-colors}-square:focus {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .se-#{$se-colors}-outline-square {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .se-#{$se-colors}-outline-square:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .se-#{$se-colors}-outline-square:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .se-#{$se-colors}-outline-round {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .se-#{$se-colors}-outline-round:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .se-#{$se-colors}-outline-round:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+}
+
+
+// /* Aruba Styles */
+
+@each $arb-colors,
+$color in $arb-colors {
+    .arb-#{$arb-colors}-text {
+        color: $color;
+    }
+    .arb-#{$arb-colors}-bg {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .blk {
+            color: #333333;
+        }
+        .wht {
+            color: #ffffff;
+        }
+    }
+    .arb-#{$arb-colors}-round {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .arb-#{$arb-colors}-round:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .arb-#{$arb-colors}-round:focus {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .arb-#{$arb-colors}-square {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        border: 2px solid $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .arb-#{$arb-colors}-square:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .arb-#{$arb-colors}-square:focus {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .arb-#{$arb-colors}-outline-square {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .arb-#{$arb-colors}-outline-square:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .arb-#{$arb-colors}-outline-square:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .arb-#{$arb-colors}-outline-round {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .arb-#{$arb-colors}-outline-round:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .arb-#{$arb-colors}-outline-round:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+}
+
+
+// /* Microsoft Styles */
+
+@each $msf-colors,
+$color in $msf-colors {
+    .msf-#{$msf-colors}-text {
+        color: $color;
+    }
+    .msf-#{$msf-colors}-bg {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .blk {
+            color: #333333;
+        }
+        .wht {
+            color: #ffffff;
+        }
+    }
+    .msf-#{$msf-colors}-round {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .msf-#{$msf-colors}-round:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .msf-#{$msf-colors}-round:focus {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .msf-#{$msf-colors}-square {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        border: 2px solid $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .msf-#{$msf-colors}-square:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .msf-#{$msf-colors}-square:focus {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .msf-#{$msf-colors}-outline-square {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .msf-#{$msf-colors}-outline-square:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .msf-#{$msf-colors}-outline-square:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .msf-#{$msf-colors}-outline-round {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .msf-#{$msf-colors}-outline-round:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .msf-#{$msf-colors}-outline-round:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+}
+
+
+// /* Life Size Styles */
+
+@each $lfs-colors,
+$color in $lfs-colors {
+    .lfs-#{$lfs-colors}-text {
+        color: $color;
+    }
+    .lfs-#{$lfs-colors}-bg {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .blk {
+            color: #333333;
+        }
+        .wht {
+            color: #ffffff;
+        }
+    }
+    .lfs-#{$lfs-colors}-round {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .lfs-#{$lfs-colors}-round:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .lfs-#{$lfs-colors}-round:focus {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .lfs-#{$lfs-colors}-square {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        border: 2px solid $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .lfs-#{$lfs-colors}-square:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+    }
+    .lfs-#{$lfs-colors}-square:focus {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .lfs-#{$lfs-colors}-outline-square {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .lfs-#{$lfs-colors}-outline-square:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .lfs-#{$lfs-colors}-outline-square:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .lfs-#{$lfs-colors}-outline-round {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .lfs-#{$lfs-colors}-outline-round:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .lfs-#{$lfs-colors}-outline-round:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+}
+
+// /* Oracle Styles */
+
+@each $ora-colors,
+$color in $ora-colors {
+    .ora-#{$ora-colors}-text {
+        color: $color;
+    }
+    .ora-#{$ora-colors}-bg {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .blk {
+            color: #333333;
+        }
+        .wht {
+            color: #ffffff;
+        }
+    }
+    .ora-#{$ora-colors}-round {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .ora-#{$ora-colors}-round:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+        .dk {
+            color: $color;
+        }
+    }
+    .ora-#{$ora-colors}-round:focus {
+        background: $color;
+        border: 2px solid $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .ora-#{$ora-colors}-square {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        border: 2px solid $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .ora-#{$ora-colors}-square:hover {
+        background: #ffffff;
+        color: $color;
+        .dk {
+            color: $color;
+        }
+        .dk {
+            color: $color;
+        }
+    }
+    .ora-#{$ora-colors}-square:focus {
+        background: $color;
+        border-color: $color;
+        color: #ffffff;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .ora-#{$ora-colors}-outline-square {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 0;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .ora-#{$ora-colors}-outline-square:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .ora-#{$ora-colors}-outline-square:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .ora-#{$ora-colors}-outline-round {
+        background: transparent;
+        border: 2px solid $color;
+        color: $color;
+        border-radius: 50px;
+        text-transform: none;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+    .ora-#{$ora-colors}-outline-round:hover {
+        background: $color;
+        color: #ffffff;
+        .dk {
+            color: #ffffff;
+        }
+    }
+    .ora-#{$ora-colors}-outline-round:focus {
+        background: #ffffff;
+        border-color: $color;
+        color: $color;
+        opacity: 0.6;
+        .dk {
+            color: darken($color, 30%);
+        }
+    }
+}
+
+
+// /* Utilities */
+
+// /* Paddings */
+.padding-0 {margin:0px;}
+.pt-0 {padding-top:0px;}
+.pb-0 {padding-bottom:0px;}
+.pr-0 {padding-right:0px;}
+.pl-0 {padding-left:0px;}
+
+.pt-15 {padding-top:15px;}
+.pb-15 {padding-bottom:15px;}
+.pr-15 {padding-right:15px;}
+.pl-15 {padding-left:15px;}
+
+.pt-30 {padding-top:30px;}
+.pb-30 {padding-bottom:30px;}
+.pr-30 {padding-right:30px;}
+.pl-30 {padding-left:30px;}
+
+.pt-45 {padding-top:45px;}
+.pb-45 {padding-bottom:45px;}
+.pr-45 {padding-right:45px;}
+.pl-45 {padding-left:45px;}
+
+// /* Margins */
+.margin-0 {margin:0px;}
+.mt-0 {margin-top:0px;}
+.mb-0 {margin-bottom:0px;}
+.mr-0 {margin-right:0px;}
+.ml-0 {margin-left:0px;}
+
+.mt-15 {margin-top:15px;}
+.mb-15 {margin-bottom:15px;}
+.mr-15 {margin-right:15px;}
+.ml-15 {margin-left:15px;}
+
+.mt-30 {margin-top:30px;}
+.mb-30 {margin-bottom:30px;}
+.mr-30 {margin-right:30px;}
+.ml-30 {margin-left:30px;}
+
+.mt-45 {margin-top:45px;}
+.mb-45 {margin-bottom:45px;}
+.mr-45 {margin-right:45px;}
+.ml-45 {margin-left:45px;}
+
+
+// /* Centering */
+
+.pr-center-row {
+    display: table;
+}
+
+.pr-center {
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+}
+
+.pr-bottom {
+    display: table-cell;
+    vertical-align: bottom;
+    float: none;
+}
+
+.pr-top {
+    display: table-cell;
+    vertical-align: top;
+    float: none;
+}
+
+@media (max-width:767px) {
+
+    .pr-center-row {
+        display: inherit!important;
+    }
+    .pr-center,
+    .pr-bottom,
+    .pr-top {
+        display: inherit!important;
+    }
+}
+
+// /* Responsive Table */
+@media (max-width:767px) {
+    .responsive-table {
+        tr {
+            th,
+            td {
+                display: block;
+                width: 100%;
+            }
+        }
+        &.table-striped {
+            tr:nth-child(odd) {
+                th,
+                td {
+                    border-top: 1px solid #f9f9f9;
+                }
+            }
+            tr:nth-child(even) {
+                th,
+                td {
+                    border-top: 1px solid #ffffff;
+                }
+            }
+        }
+    }
+}
