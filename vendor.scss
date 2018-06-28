@@ -1,4 +1,4 @@
-/* HPE Pallete */
+// brand colors
 $hpe-colors: (
   grn: #00b388,
   sla-blu: #425563,
@@ -8,8 +8,6 @@ $hpe-colors: (
   lt-gry: #f6f6f6,
   tur: #2ad2c9
 );
-
-// /* HPI Pallete */
 $hpi-colors: (
   blu: #0096d6,
   dk-gry: #767676,
@@ -19,11 +17,9 @@ $hpi-colors: (
   grn: #b7ca34,
   pur: #822980
 );
-// /* HP Print Pallete */
 $hpr-colors: (
   gld: #c8932b
 );
-// /* Dell Pallete */
 $del-colors: (
   blu: #007db8,
   cbn: #444444,
@@ -41,7 +37,6 @@ $del-colors: (
   pur: #6e2585,
   mid: #00447c
 );
-// /* Lenovo Pallete */
 $len-colors: (
   red: #e2231a,
   gry: #6f7170,
@@ -53,8 +48,6 @@ $len-colors: (
   sty-blu: #4ac0e0,
   env-grn: #6abf4a
 );
-
-// /* Cisco Palette */
 $cis-colors: (
   blu: #049fd9,
   lk-blu: #004baf,
@@ -73,11 +66,9 @@ $cis-colors: (
   sta-ora: #ff7300,
   ora: #ffa000
 );
-// /* APC Pallete */
 $apc-colors: (
   red: #e31837
 );
-// /* Schneider Electic Pallete */
 $se-colors: (
   grn: #009530,
   lt-grn: #3dcd58,
@@ -88,7 +79,6 @@ $se-colors: (
   fu-red: #b10043,
   sky-blu: #42b4e6
 );
-// /* Aruba Pallete */
 $arb-colors: (
   ora: #ff8300,
   gry: #646569,
@@ -104,21 +94,18 @@ $arb-colors: (
   ex-lt-grn: #f9f9ec,
   ex-lt-gry: #f6f6f7
 );
-// /* Microsoft */
 $msf-colors: (
   blu: #00a1f1,
   yel: #ffbb00,
   grn: #7cbb00,
   red: #f65314
 );
-// /* Life Size Pallete */
 $lfs-colors: (
   vio: #4b45db,
   yel: #ff9e16,
   pur-red: #ea1d76,
   aqua: #26cad3
 );
-// /* Oracle Pallete */
 $ora-colors: (
   lt-sla: #cad9de,
   sla: #8aadbf,
@@ -140,7 +127,49 @@ $ora-colors: (
   dk-bur: #592439,
   hyp-blu: #00758f
 );
-// /* HPE Styles */
+// variables
+$border-width: 2px;
+$radius-round: 50px;
+$radius-square: 0;
+$text-transform: none;
+// button mixins
+@mixin round-button {
+  border-radius: $radius-round;
+  text-transform: $text-transform;
+  border-width: $border-width;
+  border-style: solid;
+}
+@mixin square-button {
+  border-radius: $radius-square;
+  text-transform: $text-transform;
+  border-width: $border-width;
+  border-style: solid;
+}
+@mixin black {
+  .blk {
+    color: #212121;
+  }
+}
+@mixin white {
+  .wht {
+    color: #ffffff;
+  }
+}
+@mixin dark {
+  .dk {
+    color: rgba(0, 0, 0, 0.4);
+  }
+}
+@mixin light {
+  .lt {
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+@mixin border {
+  border-width: 1px;
+  border-style: solid;
+}
+// HPE Colors
 @each $hpe-colors, $color in $hpe-colors {
   .hpe-#{$hpe-colors}-text {
     color: $color;
@@ -149,124 +178,117 @@ $ora-colors: (
     background: $color;
     border-color: $color;
     color: #ffffff;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .blk {
-      color: #333333;
-    }
-    .wht {
-      color: #ffffff;
-    }
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .hpe-#{$hpe-colors}-round {
     background: $color;
-    border: 2px solid $color;
+    border-color: $color;
     color: #ffffff;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .hpe-#{$hpe-colors}-round:hover {
-    background: #ffffff;
+    background: transparent;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .hpe-#{$hpe-colors}-round:focus {
-    background: $color;
-    border: 2px solid $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .hpe-#{$hpe-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .hpe-#{$hpe-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .hpe-#{$hpe-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
   .hpe-#{$hpe-colors}-square {
     background: $color;
     border-color: $color;
     color: #ffffff;
-    border: 2px solid $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .hpe-#{$hpe-colors}-square:hover {
     background: #ffffff;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .hpe-#{$hpe-colors}-square:focus {
-    background: $color;
-    border-color: $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
   }
   .hpe-#{$hpe-colors}-outline-square {
     background: transparent;
-    border: 2px solid $color;
+    border-color: $color;
     color: $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .hpe-#{$hpe-colors}-outline-square:hover {
     background: $color;
     color: #ffffff;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: #ffffff;
     }
   }
   .hpe-#{$hpe-colors}-outline-square:focus {
-    background: #ffffff;
-    border-color: $color;
     color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-  }
-  .hpe-#{$hpe-colors}-outline-round {
     background: transparent;
-    border: 2px solid $color;
-    color: $color;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
-  .hpe-#{$hpe-colors}-outline-round:hover {
-    background: $color;
-    color: #ffffff;
-    .dk {
-      color: #ffffff;
-    }
-  }
-
-  .hpe-#{$hpe-colors}-outline-round:focus {
-    background: #ffffff;
+  .hpe-#{$hpe-colors}-border {
     border-color: $color;
-    color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include border;
   }
 }
-// /* HPI Styles */
+// HPI Colors
 @each $hpi-colors, $color in $hpi-colors {
   .hpi-#{$hpi-colors}-text {
     color: $color;
@@ -275,124 +297,117 @@ $ora-colors: (
     background: $color;
     border-color: $color;
     color: #ffffff;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .blk {
-      color: #333333;
-    }
-    .wht {
-      color: #ffffff;
-    }
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .hpi-#{$hpi-colors}-round {
     background: $color;
-    border: 2px solid $color;
+    border-color: $color;
     color: #ffffff;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .hpi-#{$hpi-colors}-round:hover {
-    background: #ffffff;
+    background: transparent;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .hpi-#{$hpi-colors}-round:focus {
-    background: $color;
-    border: 2px solid $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .hpi-#{$hpi-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .hpi-#{$hpi-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .hpi-#{$hpi-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
   .hpi-#{$hpi-colors}-square {
     background: $color;
     border-color: $color;
     color: #ffffff;
-    border: 2px solid $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .hpi-#{$hpi-colors}-square:hover {
     background: #ffffff;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .hpi-#{$hpi-colors}-square:focus {
-    background: $color;
-    border-color: $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
   }
   .hpi-#{$hpi-colors}-outline-square {
     background: transparent;
-    border: 2px solid $color;
+    border-color: $color;
     color: $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .hpi-#{$hpi-colors}-outline-square:hover {
     background: $color;
     color: #ffffff;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: #ffffff;
     }
   }
   .hpi-#{$hpi-colors}-outline-square:focus {
-    background: #ffffff;
-    border-color: $color;
     color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-  }
-  .hpi-#{$hpi-colors}-outline-round {
     background: transparent;
-    border: 2px solid $color;
-    color: $color;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
-  .hpi-#{$hpi-colors}-outline-round:hover {
-    background: $color;
-    color: #ffffff;
-    .dk {
-      color: #ffffff;
-    }
-  }
-
-  .hpi-#{$hpi-colors}-outline-round:focus {
-    background: #ffffff;
+  .hpi-#{$hpi-colors}-border {
     border-color: $color;
-    color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include border;
   }
 }
-// /* HP Print Styles */
+// HP Print
 @each $hpr-colors, $color in $hpr-colors {
   .hpr-#{$hpr-colors}-text {
     color: $color;
@@ -401,124 +416,117 @@ $ora-colors: (
     background: $color;
     border-color: $color;
     color: #ffffff;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .blk {
-      color: #333333;
-    }
-    .wht {
-      color: #ffffff;
-    }
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .hpr-#{$hpr-colors}-round {
     background: $color;
-    border: 2px solid $color;
+    border-color: $color;
     color: #ffffff;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .hpr-#{$hpr-colors}-round:hover {
-    background: #ffffff;
+    background: transparent;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .hpr-#{$hpr-colors}-round:focus {
-    background: $color;
-    border: 2px solid $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .hpr-#{$hpr-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .hpr-#{$hpr-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .hpr-#{$hpr-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
   .hpr-#{$hpr-colors}-square {
     background: $color;
     border-color: $color;
     color: #ffffff;
-    border: 2px solid $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .hpr-#{$hpr-colors}-square:hover {
     background: #ffffff;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .hpr-#{$hpr-colors}-square:focus {
-    background: $color;
-    border-color: $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
   }
   .hpr-#{$hpr-colors}-outline-square {
     background: transparent;
-    border: 2px solid $color;
+    border-color: $color;
     color: $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .hpr-#{$hpr-colors}-outline-square:hover {
     background: $color;
     color: #ffffff;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: #ffffff;
     }
   }
   .hpr-#{$hpr-colors}-outline-square:focus {
-    background: #ffffff;
-    border-color: $color;
     color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-  }
-  .hpr-#{$hpr-colors}-outline-round {
     background: transparent;
-    border: 2px solid $color;
-    color: $color;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
-  .hpr-#{$hpr-colors}-outline-round:hover {
-    background: $color;
-    color: #ffffff;
-    .dk {
-      color: #ffffff;
-    }
-  }
-
-  .hpr-#{$hpr-colors}-outline-round:focus {
-    background: #ffffff;
+  .hpr-#{$hpr-colors}-border {
     border-color: $color;
-    color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include border;
   }
 }
-// /* Dell Styles */
+// Dell colors
 @each $del-colors, $color in $del-colors {
   .del-#{$del-colors}-text {
     color: $color;
@@ -527,124 +535,117 @@ $ora-colors: (
     background: $color;
     border-color: $color;
     color: #ffffff;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .blk {
-      color: #333333;
-    }
-    .wht {
-      color: #ffffff;
-    }
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .del-#{$del-colors}-round {
     background: $color;
-    border: 2px solid $color;
+    border-color: $color;
     color: #ffffff;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .del-#{$del-colors}-round:hover {
-    background: #ffffff;
+    background: transparent;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .del-#{$del-colors}-round:focus {
-    background: $color;
-    border: 2px solid $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .del-#{$del-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .del-#{$del-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .del-#{$del-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
   .del-#{$del-colors}-square {
     background: $color;
     border-color: $color;
     color: #ffffff;
-    border: 2px solid $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .del-#{$del-colors}-square:hover {
     background: #ffffff;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .del-#{$del-colors}-square:focus {
-    background: $color;
-    border-color: $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
   }
   .del-#{$del-colors}-outline-square {
     background: transparent;
-    border: 2px solid $color;
+    border-color: $color;
     color: $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .del-#{$del-colors}-outline-square:hover {
     background: $color;
     color: #ffffff;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: #ffffff;
     }
   }
   .del-#{$del-colors}-outline-square:focus {
-    background: #ffffff;
-    border-color: $color;
     color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-  }
-  .del-#{$del-colors}-outline-round {
     background: transparent;
-    border: 2px solid $color;
-    color: $color;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
-  .del-#{$del-colors}-outline-round:hover {
-    background: $color;
-    color: #ffffff;
-    .dk {
-      color: #ffffff;
-    }
-  }
-
-  .del-#{$del-colors}-outline-round:focus {
-    background: #ffffff;
+  .del-#{$del-colors}-border {
     border-color: $color;
-    color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include border;
   }
 }
-// /* Lenovo Styles */
+// Lenovo colors
 @each $len-colors, $color in $len-colors {
   .len-#{$len-colors}-text {
     color: $color;
@@ -653,124 +654,117 @@ $ora-colors: (
     background: $color;
     border-color: $color;
     color: #ffffff;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .blk {
-      color: #333333;
-    }
-    .wht {
-      color: #ffffff;
-    }
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .len-#{$len-colors}-round {
     background: $color;
-    border: 2px solid $color;
+    border-color: $color;
     color: #ffffff;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .len-#{$len-colors}-round:hover {
-    background: #ffffff;
+    background: transparent;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .len-#{$len-colors}-round:focus {
-    background: $color;
-    border: 2px solid $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .len-#{$len-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .len-#{$len-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .len-#{$len-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
   .len-#{$len-colors}-square {
     background: $color;
     border-color: $color;
     color: #ffffff;
-    border: 2px solid $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .len-#{$len-colors}-square:hover {
     background: #ffffff;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .len-#{$len-colors}-square:focus {
-    background: $color;
-    border-color: $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
   }
   .len-#{$len-colors}-outline-square {
     background: transparent;
-    border: 2px solid $color;
+    border-color: $color;
     color: $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .len-#{$len-colors}-outline-square:hover {
     background: $color;
     color: #ffffff;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: #ffffff;
     }
   }
   .len-#{$len-colors}-outline-square:focus {
-    background: #ffffff;
-    border-color: $color;
     color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-  }
-  .len-#{$len-colors}-outline-round {
     background: transparent;
-    border: 2px solid $color;
-    color: $color;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
-  .len-#{$len-colors}-outline-round:hover {
-    background: $color;
-    color: #ffffff;
-    .dk {
-      color: #ffffff;
-    }
-  }
-
-  .len-#{$len-colors}-outline-round:focus {
-    background: #ffffff;
+  .len-#{$len-colors}-border {
     border-color: $color;
-    color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include border;
   }
 }
-// /* Cisco Styles */
+// Cisco colors
 @each $cis-colors, $color in $cis-colors {
   .cis-#{$cis-colors}-text {
     color: $color;
@@ -779,124 +773,117 @@ $ora-colors: (
     background: $color;
     border-color: $color;
     color: #ffffff;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .blk {
-      color: #333333;
-    }
-    .wht {
-      color: #ffffff;
-    }
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .cis-#{$cis-colors}-round {
     background: $color;
-    border: 2px solid $color;
+    border-color: $color;
     color: #ffffff;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .cis-#{$cis-colors}-round:hover {
-    background: #ffffff;
+    background: transparent;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .cis-#{$cis-colors}-round:focus {
-    background: $color;
-    border: 2px solid $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .cis-#{$cis-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .cis-#{$cis-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .cis-#{$cis-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
   .cis-#{$cis-colors}-square {
     background: $color;
     border-color: $color;
     color: #ffffff;
-    border: 2px solid $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .cis-#{$cis-colors}-square:hover {
     background: #ffffff;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .cis-#{$cis-colors}-square:focus {
-    background: $color;
-    border-color: $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
   }
   .cis-#{$cis-colors}-outline-square {
     background: transparent;
-    border: 2px solid $color;
+    border-color: $color;
     color: $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .cis-#{$cis-colors}-outline-square:hover {
     background: $color;
     color: #ffffff;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: #ffffff;
     }
   }
   .cis-#{$cis-colors}-outline-square:focus {
-    background: #ffffff;
-    border-color: $color;
     color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-  }
-  .cis-#{$cis-colors}-outline-round {
     background: transparent;
-    border: 2px solid $color;
-    color: $color;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
-  .cis-#{$cis-colors}-outline-round:hover {
-    background: $color;
-    color: #ffffff;
-    .dk {
-      color: #ffffff;
-    }
-  }
-
-  .cis-#{$cis-colors}-outline-round:focus {
-    background: #ffffff;
+  .cis-#{$cis-colors}-border {
     border-color: $color;
-    color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include border;
   }
 }
-// /* APC Styles */
+// APC Colors
 @each $apc-colors, $color in $apc-colors {
   .apc-#{$apc-colors}-text {
     color: $color;
@@ -905,124 +892,117 @@ $ora-colors: (
     background: $color;
     border-color: $color;
     color: #ffffff;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .blk {
-      color: #333333;
-    }
-    .wht {
-      color: #ffffff;
-    }
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .apc-#{$apc-colors}-round {
     background: $color;
-    border: 2px solid $color;
+    border-color: $color;
     color: #ffffff;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .apc-#{$apc-colors}-round:hover {
-    background: #ffffff;
+    background: transparent;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .apc-#{$apc-colors}-round:focus {
-    background: $color;
-    border: 2px solid $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .apc-#{$apc-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .apc-#{$apc-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .apc-#{$apc-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
   .apc-#{$apc-colors}-square {
     background: $color;
     border-color: $color;
     color: #ffffff;
-    border: 2px solid $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .apc-#{$apc-colors}-square:hover {
     background: #ffffff;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .apc-#{$apc-colors}-square:focus {
-    background: $color;
-    border-color: $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
   }
   .apc-#{$apc-colors}-outline-square {
     background: transparent;
-    border: 2px solid $color;
+    border-color: $color;
     color: $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .apc-#{$apc-colors}-outline-square:hover {
     background: $color;
     color: #ffffff;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: #ffffff;
     }
   }
   .apc-#{$apc-colors}-outline-square:focus {
-    background: #ffffff;
-    border-color: $color;
     color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-  }
-  .apc-#{$apc-colors}-outline-round {
     background: transparent;
-    border: 2px solid $color;
-    color: $color;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
-  .apc-#{$apc-colors}-outline-round:hover {
-    background: $color;
-    color: #ffffff;
-    .dk {
-      color: #ffffff;
-    }
-  }
-
-  .apc-#{$apc-colors}-outline-round:focus {
-    background: #ffffff;
+  .apc-#{$apc-colors}-border {
     border-color: $color;
-    color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include border;
   }
 }
-// /* Schneider Electric Styles */
+// Schneider colors
 @each $se-colors, $color in $se-colors {
   .se-#{$se-colors}-text {
     color: $color;
@@ -1031,120 +1011,117 @@ $ora-colors: (
     background: $color;
     border-color: $color;
     color: #ffffff;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .blk {
-      color: #333333;
-    }
-    .wht {
-      color: #ffffff;
-    }
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .se-#{$se-colors}-round {
     background: $color;
-    border: 2px solid $color;
+    border-color: $color;
     color: #ffffff;
-    border-radius: 50px;
-    text-transform: none;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .se-#{$se-colors}-round:hover {
-    background: #ffffff;
+    background: transparent;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .se-#{$se-colors}-round:focus {
-    background: $color;
-    border: 2px solid $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .se-#{$se-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .se-#{$se-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .se-#{$se-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
   .se-#{$se-colors}-square {
     background: $color;
     border-color: $color;
     color: #ffffff;
-    border: 2px solid $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .se-#{$se-colors}-square:hover {
     background: #ffffff;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .se-#{$se-colors}-square:focus {
-    background: $color;
-    border-color: $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
   }
   .se-#{$se-colors}-outline-square {
     background: transparent;
-    border: 2px solid $color;
+    border-color: $color;
     color: $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .se-#{$se-colors}-outline-square:hover {
     background: $color;
     color: #ffffff;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: #ffffff;
     }
   }
   .se-#{$se-colors}-outline-square:focus {
-    background: #ffffff;
-    border-color: $color;
     color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-  }
-  .se-#{$se-colors}-outline-round {
     background: transparent;
-    border: 2px solid $color;
-    color: $color;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
-  .se-#{$se-colors}-outline-round:hover {
-    background: $color;
-    color: #ffffff;
-    .dk {
-      color: #ffffff;
-    }
-  }
-  .se-#{$se-colors}-outline-round:focus {
-    background: #ffffff;
+  .se-#{$se-colors}-border {
     border-color: $color;
-    color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include border;
   }
 }
-// /* Aruba Styles */
+// Aruba colors
 @each $arb-colors, $color in $arb-colors {
   .arb-#{$arb-colors}-text {
     color: $color;
@@ -1153,124 +1130,117 @@ $ora-colors: (
     background: $color;
     border-color: $color;
     color: #ffffff;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .blk {
-      color: #333333;
-    }
-    .wht {
-      color: #ffffff;
-    }
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .arb-#{$arb-colors}-round {
     background: $color;
-    border: 2px solid $color;
+    border-color: $color;
     color: #ffffff;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .arb-#{$arb-colors}-round:hover {
-    background: #ffffff;
+    background: transparent;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .arb-#{$arb-colors}-round:focus {
-    background: $color;
-    border: 2px solid $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .arb-#{$arb-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .arb-#{$arb-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .arb-#{$arb-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
   .arb-#{$arb-colors}-square {
     background: $color;
     border-color: $color;
     color: #ffffff;
-    border: 2px solid $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .arb-#{$arb-colors}-square:hover {
     background: #ffffff;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .arb-#{$arb-colors}-square:focus {
-    background: $color;
-    border-color: $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
   }
   .arb-#{$arb-colors}-outline-square {
     background: transparent;
-    border: 2px solid $color;
+    border-color: $color;
     color: $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .arb-#{$arb-colors}-outline-square:hover {
     background: $color;
     color: #ffffff;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: #ffffff;
     }
   }
   .arb-#{$arb-colors}-outline-square:focus {
-    background: #ffffff;
-    border-color: $color;
     color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-  }
-  .arb-#{$arb-colors}-outline-round {
     background: transparent;
-    border: 2px solid $color;
-    color: $color;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
-  .arb-#{$arb-colors}-outline-round:hover {
-    background: $color;
-    color: #ffffff;
-    .dk {
-      color: #ffffff;
-    }
-  }
-
-  .arb-#{$arb-colors}-outline-round:focus {
-    background: #ffffff;
+  .arb-#{$arb-colors}-border {
     border-color: $color;
-    color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include border;
   }
 }
-// /* Microsoft Styles */
+// Microsoft colors
 @each $msf-colors, $color in $msf-colors {
   .msf-#{$msf-colors}-text {
     color: $color;
@@ -1279,124 +1249,117 @@ $ora-colors: (
     background: $color;
     border-color: $color;
     color: #ffffff;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .blk {
-      color: #333333;
-    }
-    .wht {
-      color: #ffffff;
-    }
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .msf-#{$msf-colors}-round {
     background: $color;
-    border: 2px solid $color;
+    border-color: $color;
     color: #ffffff;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .msf-#{$msf-colors}-round:hover {
-    background: #ffffff;
+    background: transparent;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .msf-#{$msf-colors}-round:focus {
-    background: $color;
-    border: 2px solid $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .msf-#{$msf-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .msf-#{$msf-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .msf-#{$msf-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
   .msf-#{$msf-colors}-square {
     background: $color;
     border-color: $color;
     color: #ffffff;
-    border: 2px solid $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .msf-#{$msf-colors}-square:hover {
     background: #ffffff;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .msf-#{$msf-colors}-square:focus {
-    background: $color;
-    border-color: $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
   }
   .msf-#{$msf-colors}-outline-square {
     background: transparent;
-    border: 2px solid $color;
+    border-color: $color;
     color: $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .msf-#{$msf-colors}-outline-square:hover {
     background: $color;
     color: #ffffff;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: #ffffff;
     }
   }
   .msf-#{$msf-colors}-outline-square:focus {
-    background: #ffffff;
-    border-color: $color;
     color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-  }
-  .msf-#{$msf-colors}-outline-round {
     background: transparent;
-    border: 2px solid $color;
-    color: $color;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
-  .msf-#{$msf-colors}-outline-round:hover {
-    background: $color;
-    color: #ffffff;
-    .dk {
-      color: #ffffff;
-    }
-  }
-
-  .msf-#{$msf-colors}-outline-round:focus {
-    background: #ffffff;
+  .msf-#{$msf-colors}-border {
     border-color: $color;
-    color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include border;
   }
 }
-// /* Life Size Styles */
+// Lifesize colors
 @each $lfs-colors, $color in $lfs-colors {
   .lfs-#{$lfs-colors}-text {
     color: $color;
@@ -1405,124 +1368,117 @@ $ora-colors: (
     background: $color;
     border-color: $color;
     color: #ffffff;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .blk {
-      color: #333333;
-    }
-    .wht {
-      color: #ffffff;
-    }
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .lfs-#{$lfs-colors}-round {
     background: $color;
-    border: 2px solid $color;
+    border-color: $color;
     color: #ffffff;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .lfs-#{$lfs-colors}-round:hover {
-    background: #ffffff;
+    background: transparent;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .lfs-#{$lfs-colors}-round:focus {
-    background: $color;
-    border: 2px solid $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .lfs-#{$lfs-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .lfs-#{$lfs-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .lfs-#{$lfs-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
   .lfs-#{$lfs-colors}-square {
     background: $color;
     border-color: $color;
     color: #ffffff;
-    border: 2px solid $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .lfs-#{$lfs-colors}-square:hover {
     background: #ffffff;
     color: $color;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .lfs-#{$lfs-colors}-square:focus {
-    background: $color;
-    border-color: $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
   }
   .lfs-#{$lfs-colors}-outline-square {
     background: transparent;
-    border: 2px solid $color;
+    border-color: $color;
     color: $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .lfs-#{$lfs-colors}-outline-square:hover {
     background: $color;
     color: #ffffff;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: #ffffff;
     }
   }
   .lfs-#{$lfs-colors}-outline-square:focus {
-    background: #ffffff;
-    border-color: $color;
     color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-  }
-  .lfs-#{$lfs-colors}-outline-round {
     background: transparent;
-    border: 2px solid $color;
-    color: $color;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
-  .lfs-#{$lfs-colors}-outline-round:hover {
-    background: $color;
-    color: #ffffff;
-    .dk {
-      color: #ffffff;
-    }
-  }
-
-  .lfs-#{$lfs-colors}-outline-round:focus {
-    background: #ffffff;
+  .lfs-#{$lfs-colors}-border {
     border-color: $color;
-    color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include border;
   }
 }
-// /* Oracle Styles */
+// Oracle colors
 @each $ora-colors, $color in $ora-colors {
   .ora-#{$ora-colors}-text {
     color: $color;
@@ -1531,246 +1487,168 @@ $ora-colors: (
     background: $color;
     border-color: $color;
     color: #ffffff;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .blk {
-      color: #333333;
-    }
-    .wht {
-      color: #ffffff;
-    }
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .ora-#{$ora-colors}-round {
     background: $color;
-    border: 2px solid $color;
+    border-color: $color;
     color: #ffffff;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .ora-#{$ora-colors}-round:hover {
-    background: #ffffff;
+    background: transparent;
     color: $color;
-    .dk {
-      color: $color;
-    }
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .ora-#{$ora-colors}-round:focus {
-    background: $color;
-    border: 2px solid $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
-    .dk {
-      color: darken($color, 30%);
+  }
+  .ora-#{$ora-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .ora-#{$ora-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .ora-#{$ora-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
   .ora-#{$ora-colors}-square {
     background: $color;
     border-color: $color;
     color: #ffffff;
-    border: 2px solid $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .ora-#{$ora-colors}-square:hover {
     background: #ffffff;
     color: $color;
-    .dk {
-      color: $color;
-    }
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: $color;
     }
   }
   .ora-#{$ora-colors}-square:focus {
-    background: $color;
-    border-color: $color;
     color: #ffffff;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-    .dk {
-      color: darken($color, 30%);
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
     }
   }
   .ora-#{$ora-colors}-outline-square {
     background: transparent;
-    border: 2px solid $color;
+    border-color: $color;
     color: $color;
-    border-radius: 0;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
   }
   .ora-#{$ora-colors}-outline-square:hover {
     background: $color;
     color: #ffffff;
-    .dk {
+    .dk, .wht, .blk, .lt {
       color: #ffffff;
     }
   }
   .ora-#{$ora-colors}-outline-square:focus {
-    background: #ffffff;
-    border-color: $color;
     color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
-  }
-  .ora-#{$ora-colors}-outline-round {
     background: transparent;
-    border: 2px solid $color;
-    color: $color;
-    border-radius: 50px;
-    text-transform: none;
-    .dk {
-      color: darken($color, 30%);
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
     }
   }
-  .ora-#{$ora-colors}-outline-round:hover {
-    background: $color;
-    color: #ffffff;
-    .dk {
-      color: #ffffff;
-    }
-  }
-  .ora-#{$ora-colors}-outline-round:focus {
-    background: #ffffff;
+  .ora-#{$ora-colors}-border {
     border-color: $color;
-    color: $color;
-    opacity: 0.6;
-    .dk {
-      color: darken($color, 30%);
-    }
+    @include border;
   }
 }
-// /* Utilities */
-// /* Paddings */
-.padding-0, .p-0 {
-  margin: 0px;
+// padding & margin sizes
+$pms: (
+  0: 0,
+  15: 15px,
+  30: 30px,
+  45: 45px,
+  60: 60px
+);
+@each $pms, $pmsize in $pms {
+  // paddings
+  .padding-#{$pms} { padding: $pmsize;}
+  .p-#{$pms} { padding: $pmsize;}
+  .pt-#{$pms} { padding-top: $pmsize;}
+  .pr-#{$pms} { padding-right: $pmsize;}
+  .pb-#{$pms} { padding-bottom: $pmsize;}
+  .pl-#{$pms} { padding-left: $pmsize;}
+  // margins
+  .margin-#{$pms} { margin: $pmsize;}
+  .m-#{$pms} { margin: $pmsize;}
+  .mt-#{$pms} { margin-top: $pmsize;}
+  .mr-#{$pms} { margin-right: $pmsize;}
+  .mb-#{$pms} { margin-bottom: $pmsize;}
+  .ml-#{$pms} { margin-left: $pmsize;}
 }
-.pt-0 {
-  padding-top: 0px;
+// border sizes
+$brdr: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px,
+  6: 6px,
+  7: 7px,
+  8: 8px,
+  9: 9px,
+  10: 10px
+);
+@each $brdr, $brdrsize in $brdr {
+  .border-#{$brdr} { border-width: $brdrsize; }
+  .b-#{$brdr} { border-width: $brdrsize; }
+  .bt-#{$brdr} { border-top-width: $brdrsize; }
+  .br-#{$brdr} { border-right-width: $brdrsize; }
+  .bb-#{$brdr} { border-bottom-width: $brdrsize; }
+  .bl-#{$brdr} { border-left-width: $brdrsize; }
 }
-.pb-0 {
-  padding-bottom: 0px;
+// Centering
+.pr-flex-center {
+  justify-content: center;
 }
-.pr-0 {
-  padding-right: 0px;
+.pr-flex {
+  display: flex;
 }
-.pl-0 {
-  padding-left: 0px;
-}
-.pt-15 {
-  padding-top: 15px;
-}
-.pb-15 {
-  padding-bottom: 15px;
-}
-.pr-15 {
-  padding-right: 15px;
-}
-.pl-15 {
-  padding-left: 15px;
-}
-.pt-30 {
-  padding-top: 30px;
-}
-.pb-30 {
-  padding-bottom: 30px;
-}
-.pr-30 {
-  padding-right: 30px;
-}
-.pl-30 {
-  padding-left: 30px;
-}
-.pt-45 {
-  padding-top: 45px;
-}
-.pb-45 {
-  padding-bottom: 45px;
-}
-.pr-45 {
-  padding-right: 45px;
-}
-.pl-45 {
-  padding-left: 45px;
-}
-// /* Margins */
-.margin-0, .m-0 {
-  margin: 0px;
-}
-.mt-0 {
-  margin-top: 0px;
-}
-.mb-0 {
-  margin-bottom: 0px;
-}
-.mr-0 {
-  margin-right: 0px;
-}
-.ml-0 {
-  margin-left: 0px;
-}
-.mt-15 {
-  margin-top: 15px;
-}
-.mb-15 {
-  margin-bottom: 15px;
-}
-.mr-15 {
-  margin-right: 15px;
-}
-.ml-15 {
-  margin-left: 15px;
-}
-.mt-30 {
-  margin-top: 30px;
-}
-.mb-30 {
-  margin-bottom: 30px;
-}
-.mr-30 {
-  margin-right: 30px;
-}
-.ml-30 {
-  margin-left: 30px;
-}
-.mt-45 {
-  margin-top: 45px;
-}
-.mb-45 {
-  margin-bottom: 45px;
-}
-.mr-45 {
-  margin-right: 45px;
-}
-.ml-45 {
-  margin-left: 45px;
-}
-// /* Centering */
 .pr-center-row {
   display: table;
 }
@@ -1799,26 +1677,23 @@ $ora-colors: (
     display: inherit !important;
   }
 }
-// /* Responsive Table */
+// responsive table
 @media (max-width: 767px) {
   .responsive-table {
     tr {
-      th,
-      td {
+      th, td {
         display: block;
         width: 100%;
       }
     }
     &.table-striped {
       tr:nth-child(odd) {
-        th,
-        td {
+        th, td {
           border-top: 1px solid #f9f9f9;
         }
       }
       tr:nth-child(even) {
-        th,
-        td {
+        th, td {
           border-top: 1px solid #ffffff;
         }
       }
