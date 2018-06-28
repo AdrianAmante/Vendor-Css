@@ -1,4 +1,14 @@
 // brand colors
+$oa-colors: (
+  navy: #1e3869,
+  lime: #c1e2cb,
+  lemon: #fee48b,
+  lily: #e5ebe7,
+  night: #333333,
+  steel: #a7b8d7,
+  will: #596e6b,
+  west: #615935
+);
 $hpe-colors: (
   grn: #00b388,
   sla-blu: #425563,
@@ -168,6 +178,125 @@ $text-transform: none;
 @mixin border {
   border-width: 1px;
   border-style: solid;
+}
+// OneAffiniti colors
+@each $oa-colors, $color in $oa-colors {
+  .oa-#{$oa-colors}-text {
+    color: $color;
+  }
+  .oa-#{$oa-colors}-bg {
+    background: $color;
+    border-color: $color;
+    color: #ffffff;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .oa-#{$oa-colors}-round {
+    background: $color;
+    border-color: $color;
+    color: #ffffff;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .oa-#{$oa-colors}-round:hover {
+    background: transparent;
+    color: $color;
+    .dk, .wht, .blk, .lt {
+      color: $color;
+    }
+  }
+  .oa-#{$oa-colors}-round:focus {
+    color: #ffffff;
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .oa-#{$oa-colors}-outline-round {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include round-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .oa-#{$oa-colors}-outline-round:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .oa-#{$oa-colors}-outline-round:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
+    }
+  }
+  .oa-#{$oa-colors}-square {
+    background: $color;
+    border-color: $color;
+    color: #ffffff;
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .oa-#{$oa-colors}-square:hover {
+    background: #ffffff;
+    color: $color;
+    .dk, .wht, .blk, .lt {
+      color: $color;
+    }
+  }
+  .oa-#{$oa-colors}-square:focus {
+    color: #ffffff;
+    background: $color;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .oa-#{$oa-colors}-outline-square {
+    background: transparent;
+    border-color: $color;
+    color: $color;
+    @include square-button;
+    @include black;
+    @include white;
+    @include dark;
+    @include light;
+  }
+  .oa-#{$oa-colors}-outline-square:hover {
+    background: $color;
+    color: #ffffff;
+    .dk, .wht, .blk, .lt {
+      color: #ffffff;
+    }
+  }
+  .oa-#{$oa-colors}-outline-square:focus {
+    color: $color;
+    background: transparent;
+    opacity: 0.7;
+    .dk, .wht, .blk, .lt {
+      color: $color;
+    }
+  }
+  .oa-#{$oa-colors}-border {
+    border-color: $color;
+    @include border;
+  }
 }
 // HPE Colors
 @each $hpe-colors, $color in $hpe-colors {
@@ -1607,19 +1736,19 @@ $pms: (
 );
 @each $pms, $pmsize in $pms {
   // paddings
-  .padding-#{$pms} { padding: $pmsize;}
-  .p-#{$pms} { padding: $pmsize;}
-  .pt-#{$pms} { padding-top: $pmsize;}
-  .pr-#{$pms} { padding-right: $pmsize;}
-  .pb-#{$pms} { padding-bottom: $pmsize;}
-  .pl-#{$pms} { padding-left: $pmsize;}
+  .padding-#{$pms} { padding: $pmsize; }
+  .p-#{$pms} { padding: $pmsize; }
+  .pt-#{$pms} { padding-top: $pmsize; }
+  .pr-#{$pms} { padding-right: $pmsize; }
+  .pb-#{$pms} { padding-bottom: $pmsize; }
+  .pl-#{$pms} { padding-left: $pmsize; }
   // margins
-  .margin-#{$pms} { margin: $pmsize;}
-  .m-#{$pms} { margin: $pmsize;}
-  .mt-#{$pms} { margin-top: $pmsize;}
-  .mr-#{$pms} { margin-right: $pmsize;}
-  .mb-#{$pms} { margin-bottom: $pmsize;}
-  .ml-#{$pms} { margin-left: $pmsize;}
+  .margin-#{$pms} { margin: $pmsize; }
+  .m-#{$pms} { margin: $pmsize; }
+  .mt-#{$pms} { margin-top: $pmsize; }
+  .mr-#{$pms} { margin-right: $pmsize; }
+  .mb-#{$pms} { margin-bottom: $pmsize; }
+  .ml-#{$pms} { margin-left: $pmsize; }
 }
 // border sizes
 $brdr: (
@@ -1681,19 +1810,22 @@ $brdr: (
 @media (max-width: 767px) {
   .responsive-table {
     tr {
-      th, td {
+      th,
+      td {
         display: block;
         width: 100%;
       }
     }
     &.table-striped {
       tr:nth-child(odd) {
-        th, td {
+        th,
+        td {
           border-top: 1px solid #f9f9f9;
         }
       }
       tr:nth-child(even) {
-        th, td {
+        th,
+        td {
           border-top: 1px solid #ffffff;
         }
       }
